@@ -11,9 +11,9 @@ namespace WcfSample1.Host
             ServiceHost serviceHost = default;
             try
             {
-                serviceHost = new ServiceHost(typeof(Greet), new Uri("net.pipe://localhost/wcfsample1/"));
+                serviceHost = new ServiceHost(typeof(Greet), new Uri("net.tcp://localhost:40015/wcfsample1/"));
                 serviceHost.AddServiceEndpoint(typeof(IGreet),
-                    new NetNamedPipeBinding(NetNamedPipeSecurityMode.Transport), "test");
+                    new NetTcpBinding(SecurityMode.Transport), "test");
                 serviceHost.Open();
 
                 Console.WriteLine("press any key to exit...");
