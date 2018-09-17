@@ -11,8 +11,8 @@ namespace WcfSample1.Client
             try
             {
                 var channel = ChannelFactory<IGreet>.CreateChannel(
-                    new BasicHttpBinding(BasicHttpSecurityMode.TransportCredentialOnly),
-                    new EndpointAddress("http://localhost:40012/wcfsample1/test/"));
+                    new NetNamedPipeBinding(NetNamedPipeSecurityMode.Transport), 
+                    new EndpointAddress("net.pipe://localhost/wcfsample1/test/"));
 
                 var person = new Person { Age = 10, Name = "alice" };
                 channel.Hello(person);
